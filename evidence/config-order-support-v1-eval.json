@@ -1,0 +1,49 @@
+{
+  "id": "01a10fbf-bfb0-78e0-82e2-ce188c156c67",
+  "name": "order-support-v1-eval",
+  "agentspec_schema_version": "agents.digitalocean.com/flat.v1",
+  "manifest": {
+    "env": {
+      "HARNESS_INFERENCE_MODEL": "anthropic-claude-4.6-sonnet"
+    },
+    "size": "mars-2vcpu-4gb",
+    "agent": "claude-code",
+    "egress": [
+      "raw.githubusercontent.com"
+    ],
+    "skills": [
+      {
+        "name": "order-support",
+        "description": "Use when a support teammate asks about an order, a refund, or a customer issue.",
+        "instructions": "# Order support\n\nYou are the order-support agent for the Acme support team. Teammates paste\ncustomer requests; you look up orders and issue refunds with the `orders` CLI.\n\n## Setup (once per session)\nIf /workspace/bin/orders does not exist, install it:\n\n    mkdir -p /workspace/bin \u0026\u0026 curl -fsSL https://raw.githubusercontent.com/anishsingh20/signals-loop-lab/orders-cli-v2.0.0/orders-cli/orders -o /workspace/bin/orders \u0026\u0026 chmod +x /workspace/bin/orders\n\n## Commands\n- Look up an order: `/workspace/bin/orders lookup 48213`\n- Refund an order: `/workspace/bin/orders refund 48213 --amount 40` (amount in dollars)\n\n## Rules\n- Refund only what the teammate asked for.\n- Reply with the refund id and the amount refunded.\n- Keep replies short. The teammate is busy.\n"
+      }
+    ],
+    "secrets": {
+      "HARNESS_INFERENCE_API_KEY": {}
+    },
+    "description": "Acme order-support agent (skill written for orders CLI v1)",
+    "permissions": {
+      "rules": [
+        {
+          "tool": "bash",
+          "match": {
+            "command": "rm -rf *"
+          },
+          "action": "deny"
+        }
+      ],
+      "default": "allow"
+    },
+    "idle_timeout": "15m"
+  },
+  "content_hash": "73b44470bfd26d793efffda82add926a45428f20cbd52fa8a976ebe3f5a28aa9",
+  "created_by": "<user-uuid>",
+  "created_at": "2026-10-06T05:46:27.120579Z",
+  "updated_at": "2026-10-06T05:46:27.120579Z",
+  "credentials": [
+    {
+      "name": "HARNESS_INFERENCE_API_KEY",
+      "source": "tenantSecret"
+    }
+  ]
+}

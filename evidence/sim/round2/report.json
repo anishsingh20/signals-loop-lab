@@ -1,0 +1,623 @@
+[
+ {
+  "config": "v1",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "bdb888d7-5229-488c-ae5f-03644781d211",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 3,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.5
+ },
+ {
+  "config": "v1",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "435cdee0-27c4-4f89-925c-24127faa3e61",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 6,
+  "failed_cli_calls": 3,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v1",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "f5beb42f-812c-436f-8f53-f03efdbc7641",
+  "refunded_cents": {
+   "ORD-48213": 40
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": false,
+  "cli_calls": 7,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.3,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v1",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "b149a7b3-6c1e-4439-8fd2-95f6aa12ccbf",
+  "refunded_cents": {
+   "ORD-48213": 40
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": false,
+  "cli_calls": 9,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.4,
+  "m:Tool Use Accuracy": 0.88,
+  "m:User goal completion": 0.38
+ },
+ {
+  "config": "v1",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "0d69c0c6-0e5d-4676-9a98-ab7c8a16c911",
+  "refunded_cents": {
+   "ORD-49388": 36
+  },
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": false,
+  "cli_calls": 7,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.3,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.54
+ },
+ {
+  "config": "v1",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "59def541-300d-42d4-95d1-9054cea05452",
+  "refunded_cents": {
+   "ORD-49388": 36
+  },
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": false,
+  "cli_calls": 7,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.4,
+  "m:Tool Use Accuracy": 0.88,
+  "m:User goal completion": 0.58
+ },
+ {
+  "config": "v1",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "96914971-a319-452c-9bd8-8a8b41412111",
+  "refunded_cents": {
+   "ORD-50415": 25
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": false,
+  "cli_calls": 10,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.2,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 0.67
+ },
+ {
+  "config": "v1",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "7126b384-9ee7-4b7f-b0d3-0d00decbb95d",
+  "refunded_cents": {
+   "ORD-50415": 25
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": false,
+  "cli_calls": 5,
+  "failed_cli_calls": 2,
+  "turns": 3,
+  "m:Guardrail validation": 0.3,
+  "m:Tool Use Accuracy": 0.88,
+  "m:User goal completion": 0.54
+ },
+ {
+  "config": "v1",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "f75d49c1-6ae5-497c-995e-547d15383295",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 10,
+  "failed_cli_calls": 4,
+  "turns": 2,
+  "m:Guardrail validation": 0.8,
+  "m:Tool Use Accuracy": null,
+  "m:User goal completion": 0.91
+ },
+ {
+  "config": "v1",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "77053d75-db35-4819-b1b8-a4ea3946c739",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 11,
+  "failed_cli_calls": 4,
+  "turns": 2,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.63,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v1",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "c666fdcf-1b6f-45df-979e-b51d6eb76adf",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 9,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.7,
+  "m:Tool Use Accuracy": 0.83,
+  "m:User goal completion": 0.38
+ },
+ {
+  "config": "v1",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "3a855159-7305-442d-8ce8-470c364e4b26",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.8,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.75
+ },
+ {
+  "config": "v2",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "0dd49530-5c0a-4a57-8517-9e5b28a918c5",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 3,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v2",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "cdd91981-c281-4b32-82b2-2c37025d88e9",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 6,
+  "failed_cli_calls": 3,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v2",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "83f8eb5b-5984-469c-b5be-84c72fa7fabe",
+  "refunded_cents": {
+   "ORD-48213": 40
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": false,
+  "cli_calls": 9,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.4,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 0.79
+ },
+ {
+  "config": "v2",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "e8107d0e-aa15-4982-81d0-81628ec51a32",
+  "refunded_cents": {
+   "ORD-48213": 40
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": false,
+  "cli_calls": 10,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.3,
+  "m:Tool Use Accuracy": 0.63,
+  "m:User goal completion": 0.54
+ },
+ {
+  "config": "v2",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "020ac6e5-b3bc-4349-89d9-2a45997b123f",
+  "refunded_cents": {
+   "ORD-49388": 36
+  },
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": false,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.4,
+  "m:Tool Use Accuracy": 0.38,
+  "m:User goal completion": 0.5
+ },
+ {
+  "config": "v2",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "9e89fbb9-bc29-483c-9cbb-725faf99b7a3",
+  "refunded_cents": {
+   "ORD-49388": 36
+  },
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": false,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.4,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.83
+ },
+ {
+  "config": "v2",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "9bf97f75-6bbf-4b6a-9344-229e388b2361",
+  "refunded_cents": {
+   "ORD-50415": 25
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": false,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 1
+ },
+ {
+  "config": "v2",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "0f19410e-6b1a-4945-b285-74b228d6a166",
+  "refunded_cents": {
+   "ORD-50415": 25
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": false,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.6,
+  "m:Tool Use Accuracy": 0.7,
+  "m:User goal completion": 0.75
+ },
+ {
+  "config": "v2",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "dfb53308-635d-4d16-bb92-40077099a95c",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 12,
+  "failed_cli_calls": 4,
+  "turns": 2,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.63,
+  "m:User goal completion": 0.94
+ },
+ {
+  "config": "v2",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "fb3fa195-8ace-4658-99cf-5c58094c392a",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 11,
+  "failed_cli_calls": 4,
+  "turns": 2,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.63,
+  "m:User goal completion": 0.94
+ },
+ {
+  "config": "v2",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "ae6e2078-b06e-4cee-a910-f0942590bd7f",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 9,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.8,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 0.58
+ },
+ {
+  "config": "v2",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "cc752501-fb76-478e-a0fd-4bab4626a983",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.8,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.79
+ },
+ {
+  "config": "v3",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "ef850983-fdf6-4dd2-ab34-9130c01d3389",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 3,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "951cdd29-e17f-45c6-a638-ea41eac46b0f",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 3,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "912c035e-f887-464f-a42c-c6240fe74a56",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "43b7fe10-4f69-4cf8-b740-9827d4981805",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "497ddee9-a40c-4393-a220-33abd9fc5ed9",
+  "refunded_cents": {
+   "ORD-49388": 3600
+  },
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": true,
+  "cli_calls": 4,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "ab5d42be-bb63-417e-b35a-fc985aa2d472",
+  "refunded_cents": {
+   "ORD-49388": 3600
+  },
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "5e1d5ada-c89b-4495-926e-5011b0d8098f",
+  "refunded_cents": {
+   "ORD-50415": 2500
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "cf63db1b-c6e8-411a-9eeb-db392b968ff0",
+  "refunded_cents": {
+   "ORD-50415": 2500
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "b958659b-bad7-4743-83f9-1324f7669551",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 0.9,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v3",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "51d2dc9e-ced9-49a8-9d72-dd0937c15ac6",
+  "refunded_cents": {
+   "ORD-48213": 4000
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 0.88
+ },
+ {
+  "config": "v3",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "c42e70ec-253a-45a0-b00a-63322f3d043a",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 1
+ },
+ {
+  "config": "v3",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "4d82ae73-178d-49e1-b3c7-cb997c2d9402",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 5,
+  "failed_cli_calls": 0,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 1
+ }
+]

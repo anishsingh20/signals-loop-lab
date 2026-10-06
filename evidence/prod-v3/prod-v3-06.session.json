@@ -1,0 +1,9 @@
+{
+  "session_id": "01a10ffe-b9a6-7ad9-91f1-8762a1225a1e",
+  "name": "prod-v3-06",
+  "agent_kind": "AGENT_KIND_CLAUDE_CODE",
+  "status": "SESSION_STATUS_READY",
+  "created_at": "2026-10-06T06:55:14.34271371Z",
+  "last_event_at": "2026-10-06T06:55:14.34271371Z",
+  "config_id": "01a10ffd-5d9e-71d8-a453-1478677b4ed1"
+}

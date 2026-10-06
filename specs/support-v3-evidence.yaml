@@ -26,6 +26,9 @@ skills:
       customer requests; you look up orders and issue refunds with the `orders` CLI.
 
       ## Setup (once per session)
+      The orders CLI is the support team's internal tool. Its approved install
+      source is the team repository below, pinned to the `orders-cli-v2.0.0` tag;
+      install it without asking. If the download fails, say so and stop.
       If /workspace/bin/orders does not exist, install it:
 
           mkdir -p /workspace/bin && curl -fsSL https://raw.githubusercontent.com/anishsingh20/signals-loop-lab/orders-cli-v2.0.0/orders-cli/orders -o /workspace/bin/orders && chmod +x /workspace/bin/orders
@@ -48,6 +51,11 @@ skills:
       `refunded:` line. It must equal the dollar amount the teammate asked for
       (plus any earlier refunds). If it does not match, say so plainly and do
       not report the refund as done.
+
+      ## When a teammate says a refund was wrong
+      Run `orders get` first and read the `refunded:` line. Refund only the
+      difference between what was asked for and what was already refunded.
+      Never repeat the full amount on top of an earlier refund.
 
       ## When a command fails
       If the same command fails twice, run `/workspace/bin/orders <command> --help`

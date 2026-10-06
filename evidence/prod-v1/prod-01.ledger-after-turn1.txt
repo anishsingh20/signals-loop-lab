@@ -1,0 +1,2 @@
+{"refund_id": "RF-0001", "order_id": "ORD-48213", "amount_cents": 40, "reason": "damaged", "created_at": 1791264762}
+refunded:  $0.40

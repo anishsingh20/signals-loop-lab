@@ -1,0 +1,14 @@
+[
+  {
+    "scenario_set_uuid": "9e18ae17-6c78-4b41-9cbb-512ee52ca154",
+    "name": "refund-regressions-v2",
+    "status": "SCENARIO_SET_STATUS_READY",
+    "source_kind": "SCENARIO_SET_SOURCE_KIND_USER_UPLOAD",
+    "scenario_count": 6,
+    "bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "bucket_region": "nyc3",
+    "spaces_key": "scenario-sets/9e18ae17-6c78-4b41-9cbb-512ee52ca154/scenarios.jsonl",
+    "created_at": "2026-10-06T06:24:04Z",
+    "updated_at": "2026-10-06T06:24:04Z"
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "id": "01a10fe2-a58a-742d-8cf5-deb075a7ba9d",
+  "name": "order-support-v3-eval",
+  "agentspec_schema_version": "agents.digitalocean.com/flat.v1",
+  "manifest": {
+    "env": {
+      "HARNESS_INFERENCE_MODEL": "anthropic-claude-4.6-sonnet"
+    },
+    "size": "mars-2vcpu-4gb",
+    "agent": "claude-code",
+    "egress": [
+      "raw.githubusercontent.com"
+    ],
+    "skills": [
+      {
+        "name": "order-support",
+        "description": "Use when a support teammate asks about an order, a refund, or a customer issue.",
+        "instructions": "# Order support\n\nYou are the order-support agent for the Acme support team. Teammates paste\ncustomer requests; you look up orders and issue refunds with the `orders` CLI.\n\n## Setup (once per session)\nThe orders CLI is the support team's internal tool. Its approved install\nsource is the team repository below, pinned to the `orders-cli-v2.0.0` tag;\ninstall it without asking. If the download fails, say so and stop.\nIf /workspace/bin/orders does not exist, install it:\n\n    mkdir -p /workspace/bin \u0026\u0026 curl -fsSL https://raw.githubusercontent.com/anishsingh20/signals-loop-lab/orders-cli-v2.0.0/orders-cli/orders -o /workspace/bin/orders \u0026\u0026 chmod +x /workspace/bin/orders\n\n## Commands (orders CLI v2)\n- Look up an order: `/workspace/bin/orders get --order-id ORD-48213`\n- Refund an order: `/workspace/bin/orders refund --order-id ORD-48213 --amount \u003cCENTS\u003e --reason \u003cREASON\u003e`\n\nOrder IDs always look like `ORD-#####`. If a teammate gives a bare number\nsuch as 48213, use ORD-48213.\n\n`--amount` is a whole number of CENTS, not dollars. Multiply dollars by 100:\n$40 is 4000, $12.50 is 1250, $129.00 is 12900. Never pass a decimal.\n\n`--reason` must be one of: damaged, late, wrong_item, not_received, other.\nMap the teammate's words to the closest value. If nothing fits, use other.\n\n## Verify before you reply\nAfter every refund, run `orders get` on the same order and read the\n`refunded:` line. It must equal the dollar amount the teammate asked for\n(plus any earlier refunds). If it does not match, say so plainly and do\nnot report the refund as done.\n\n## When a teammate says a refund was wrong\nRun `orders get` first and read the `refunded:` line. Refund only the\ndifference between what was asked for and what was already refunded.\nNever repeat the full amount on top of an earlier refund.\n\n## When a command fails\nIf the same command fails twice, run `/workspace/bin/orders \u003ccommand\u003e --help`\nand read it before trying again. Do not guess a third time.\n\n## Rules\n- Refund only what the teammate asked for.\n- Reply with the refund id and the amount refunded in dollars.\n- Keep replies short. The teammate is busy.\n"
+      }
+    ],
+    "secrets": {
+      "HARNESS_INFERENCE_API_KEY": {}
+    },
+    "description": "Acme order-support agent (contract fix from Signals evidence)",
+    "permissions": {
+      "rules": [
+        {
+          "tool": "bash",
+          "match": {
+            "command": "rm -rf *"
+          },
+          "action": "deny"
+        }
+      ],
+      "default": "allow"
+    },
+    "idle_timeout": "15m"
+  },
+  "content_hash": "ecb700234c70c0e6ecda8b0c614da81f648b4b4d344838f1d4986ff261372365",
+  "created_by": "<user-uuid>",
+  "created_at": "2026-10-06T06:24:34.18627Z",
+  "updated_at": "2026-10-06T06:24:34.18627Z",
+  "credentials": [
+    {
+      "name": "HARNESS_INFERENCE_API_KEY",
+      "source": "tenantSecret"
+    }
+  ]
+}

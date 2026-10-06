@@ -1,0 +1,67 @@
+{
+  "simulation_run": {
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "name": "v1-baseline-stale-skill",
+    "scenario_set_uuid": "d5fda958-1727-4a76-99a7-9fdd028e676f",
+    "agent_config": {
+      "agent_uuid": "01a10fbf-bfb0-78e0-82e2-ce188c156c67",
+      "name": "order-support-v1-eval"
+    },
+    "status": "SIMULATION_RUN_STATUS_SUCCEEDED",
+    "user_simulator_model_uuid": "72c3744c-91e0-11f1-aee4-4e013e2ddde4",
+    "judge_model_uuid": "b6534dcb-7be2-11f1-aee4-4e013e2ddde4",
+    "scenario_count": 6,
+    "total_journeys": 6,
+    "journeys_finished": 6,
+    "result_summary": {
+      "token_usage": {
+        "simulator_tokens": "89406",
+        "candidate_agent_tokens": "667",
+        "total_tokens": "90073"
+      },
+      "total_duration_sec": "237"
+    },
+    "workflow_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "exploration_budget": 1,
+    "max_turns": 5,
+    "created_at": "2026-10-06T05:49:44Z",
+    "updated_at": "2026-10-06T05:54:37Z",
+    "user_simulator_model_name": "DeepSeek V4 Flash 0731",
+    "judge_model_name": "OpenAI GPT-5.6 Luna",
+    "created_by_user_id": "<user-id>",
+    "created_by_user_email": "<redacted>",
+    "evaluation_run_uuid": "5787da2e-743a-409c-984d-64cf4a7d7b56"
+  },
+  "scenario_results": [
+    {
+      "scenario_uuid": "01cdec0d-a039-4432-b4dc-dae23859615d",
+      "total_journeys": 1,
+      "journeys_finished": 1
+    },
+    {
+      "scenario_uuid": "02dd5016-87f1-495d-8f37-9ca5395c6171",
+      "total_journeys": 1,
+      "journeys_finished": 1
+    },
+    {
+      "scenario_uuid": "09cc151f-344e-43e0-b685-a0d6a9a75645",
+      "total_journeys": 1,
+      "journeys_finished": 1
+    },
+    {
+      "scenario_uuid": "9596c8c3-b5f8-4ff3-83b0-69c39c4cdc6a",
+      "total_journeys": 1,
+      "journeys_finished": 1
+    },
+    {
+      "scenario_uuid": "97166714-be4f-4327-a03a-bf939abdf0cd",
+      "total_journeys": 1,
+      "journeys_finished": 1
+    },
+    {
+      "scenario_uuid": "db54d217-3753-41db-99a3-b17649fc1c41",
+      "total_journeys": 1,
+      "journeys_finished": 1
+    }
+  ]
+}

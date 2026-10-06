@@ -1,0 +1,4 @@
+sent to prod-05 (01a10fb3) run 01a10fb5-20f3-75f6-8f6f-618ebf66873d at 05:34:51Z
+   3.1s [run  ] started: Great, thanks. That's sorted then.
+         [agent] Glad it's sorted. Let me know when the next one comes in.
+   3.2s [run  ] completed: in=3 out=55 cost=$0.0084

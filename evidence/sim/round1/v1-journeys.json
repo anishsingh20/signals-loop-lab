@@ -1,0 +1,74 @@
+[
+  {
+    "journey_uuid": "72f4a2aa-ddc7-4f5b-8045-9be2df9501c8",
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "scenario_uuid": "01cdec0d-a039-4432-b4dc-dae23859615d",
+    "session_id": "01a10fc2-eb78-7a62-b2a8-a467b1c7c5cb",
+    "status": "SIMULATION_JOURNEY_STATUS_FINISHED",
+    "trajectory_bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "trajectory_bucket_region": "nyc3",
+    "trajectory_spaces_key": "runs/543d6925-d6fd-425d-9329-48ae0e8e366d/journeys/72f4a2aa-ddc7-4f5b-8045-9be2df9501c8/trajectory.json",
+    "created_at": "2026-10-06T05:49:54Z",
+    "updated_at": "2026-10-06T05:51:37Z"
+  },
+  {
+    "journey_uuid": "1f180129-b07b-4e74-8427-816d5fe47053",
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "scenario_uuid": "02dd5016-87f1-495d-8f37-9ca5395c6171",
+    "session_id": "01a10fc2-eb9b-7dfc-a2a1-2bb89619d8f9",
+    "status": "SIMULATION_JOURNEY_STATUS_FINISHED",
+    "trajectory_bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "trajectory_bucket_region": "nyc3",
+    "trajectory_spaces_key": "runs/543d6925-d6fd-425d-9329-48ae0e8e366d/journeys/1f180129-b07b-4e74-8427-816d5fe47053/trajectory.json",
+    "created_at": "2026-10-06T05:49:53Z",
+    "updated_at": "2026-10-06T05:52:12Z"
+  },
+  {
+    "journey_uuid": "19ed9676-403b-45ca-a5e9-f1abab46f975",
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "scenario_uuid": "09cc151f-344e-43e0-b685-a0d6a9a75645",
+    "session_id": "01a10fc2-eb81-7af1-a33c-1b260b43503c",
+    "status": "SIMULATION_JOURNEY_STATUS_FINISHED",
+    "trajectory_bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "trajectory_bucket_region": "nyc3",
+    "trajectory_spaces_key": "runs/543d6925-d6fd-425d-9329-48ae0e8e366d/journeys/19ed9676-403b-45ca-a5e9-f1abab46f975/trajectory.json",
+    "created_at": "2026-10-06T05:49:53Z",
+    "updated_at": "2026-10-06T05:51:36Z"
+  },
+  {
+    "journey_uuid": "e842c6c8-1667-4840-8789-b12051a86398",
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "scenario_uuid": "9596c8c3-b5f8-4ff3-83b0-69c39c4cdc6a",
+    "session_id": "01a10fc2-eb98-7b81-9584-c4e2fa881fad",
+    "status": "SIMULATION_JOURNEY_STATUS_FINISHED",
+    "trajectory_bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "trajectory_bucket_region": "nyc3",
+    "trajectory_spaces_key": "runs/543d6925-d6fd-425d-9329-48ae0e8e366d/journeys/e842c6c8-1667-4840-8789-b12051a86398/trajectory.json",
+    "created_at": "2026-10-06T05:49:54Z",
+    "updated_at": "2026-10-06T05:52:56Z"
+  },
+  {
+    "journey_uuid": "5dfe95fc-66df-4f2e-9dd7-00a9d9e87df5",
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "scenario_uuid": "97166714-be4f-4327-a03a-bf939abdf0cd",
+    "session_id": "01a10fc2-eb98-7ee3-b223-10fd3be160c2",
+    "status": "SIMULATION_JOURNEY_STATUS_FINISHED",
+    "trajectory_bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "trajectory_bucket_region": "nyc3",
+    "trajectory_spaces_key": "runs/543d6925-d6fd-425d-9329-48ae0e8e366d/journeys/5dfe95fc-66df-4f2e-9dd7-00a9d9e87df5/trajectory.json",
+    "created_at": "2026-10-06T05:49:53Z",
+    "updated_at": "2026-10-06T05:53:50Z"
+  },
+  {
+    "journey_uuid": "61461bef-5b3e-4818-9133-91dd625b2835",
+    "run_uuid": "543d6925-d6fd-425d-9329-48ae0e8e366d",
+    "scenario_uuid": "db54d217-3753-41db-99a3-b17649fc1c41",
+    "session_id": "01a10fc2-eb72-7c34-af86-f83764a8de6c",
+    "status": "SIMULATION_JOURNEY_STATUS_FINISHED",
+    "trajectory_bucket_name": "gen-ai-simulation-nyc3-<team-uuid>",
+    "trajectory_bucket_region": "nyc3",
+    "trajectory_spaces_key": "runs/543d6925-d6fd-425d-9329-48ae0e8e366d/journeys/61461bef-5b3e-4818-9133-91dd625b2835/trajectory.json",
+    "created_at": "2026-10-06T05:49:54Z",
+    "updated_at": "2026-10-06T05:50:27Z"
+  }
+]

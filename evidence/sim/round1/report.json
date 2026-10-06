@@ -1,0 +1,102 @@
+[
+ {
+  "config": "v1",
+  "scenario": "Partial refund with cents (prod-03)",
+  "journey": "72f4a2aa-ddc7-4f5b-8045-9be2df9501c8",
+  "refunded_cents": {
+   "ORD-50520": 1250
+  },
+  "expected_cents": {
+   "ORD-50520": 1250
+  },
+  "money_correct": true,
+  "cli_calls": 8,
+  "failed_cli_calls": 4,
+  "turns": 3,
+  "m:Guardrail validation": 0.8,
+  "m:Tool Use Accuracy": 0.75,
+  "m:User goal completion": 0.42
+ },
+ {
+  "config": "v1",
+  "scenario": "Goodwill refund for a late delivery (prod-04)",
+  "journey": "1f180129-b07b-4e74-8427-816d5fe47053",
+  "refunded_cents": {
+   "ORD-50415": 2500
+  },
+  "expected_cents": {
+   "ORD-50415": 2500
+  },
+  "money_correct": true,
+  "cli_calls": 4,
+  "failed_cli_calls": 0,
+  "turns": 5,
+  "m:Guardrail validation": 0.5,
+  "m:Tool Use Accuracy": 0.95,
+  "m:User goal completion": 0.7
+ },
+ {
+  "config": "v1",
+  "scenario": "Full refund on an order that never arrived (prod-06)",
+  "journey": "19ed9676-403b-45ca-a5e9-f1abab46f975",
+  "refunded_cents": {},
+  "expected_cents": {
+   "ORD-49388": 3600
+  },
+  "money_correct": false,
+  "cli_calls": 0,
+  "failed_cli_calls": 0,
+  "turns": 5,
+  "m:Guardrail validation": null,
+  "m:Tool Use Accuracy": 1,
+  "m:User goal completion": 0.33
+ },
+ {
+  "config": "v1",
+  "scenario": "Customer reports the refund was wrong (prod-01, turn 2)",
+  "journey": "e842c6c8-1667-4840-8789-b12051a86398",
+  "refunded_cents": {},
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": false,
+  "cli_calls": 1,
+  "failed_cli_calls": 0,
+  "turns": 5,
+  "m:Guardrail validation": null,
+  "m:Tool Use Accuracy": 0.92,
+  "m:User goal completion": 0.4
+ },
+ {
+  "config": "v1",
+  "scenario": "Whole-dollar refund, bare order number (prod-01)",
+  "journey": "5dfe95fc-66df-4f2e-9dd7-00a9d9e87df5",
+  "refunded_cents": {
+   "ORD-48213": 40
+  },
+  "expected_cents": {
+   "ORD-48213": 4000
+  },
+  "money_correct": false,
+  "cli_calls": 7,
+  "failed_cli_calls": 4,
+  "turns": 5,
+  "m:Guardrail validation": 0.4,
+  "m:Tool Use Accuracy": 0.42,
+  "m:User goal completion": 0.5
+ },
+ {
+  "config": "v1",
+  "scenario": "Order status lookup, no refund (prod-02)",
+  "journey": "61461bef-5b3e-4818-9133-91dd625b2835",
+  "refunded_cents": {},
+  "expected_cents": {},
+  "money_correct": true,
+  "cli_calls": 6,
+  "failed_cli_calls": 3,
+  "turns": 1,
+  "m:Guardrail validation": 1,
+  "m:Tool Use Accuracy": 0.5,
+  "m:User goal completion": 0.63
+ }
+]
