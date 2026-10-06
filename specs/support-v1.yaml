@@ -1,0 +1,40 @@
+# v1: the agent as it ran in production. Its skill was written for orders CLI v1
+# and nobody updated it when the CLI moved to v2.0.0 (see orders-cli/CHANGELOG.md).
+agent: claude-code
+description: Acme order-support agent (skill written for orders CLI v1)
+size: mars-2vcpu-4gb
+idle_timeout: 15m
+env:
+  HARNESS_INFERENCE_MODEL: anthropic-claude-4.6-sonnet
+secrets:
+  HARNESS_INFERENCE_API_KEY: ${HARNESS_INFERENCE_API_KEY}
+egress:
+  - raw.githubusercontent.com
+permissions:
+  default: allow
+  rules:
+    - tool: bash
+      match: { command: "rm -rf *" }
+      action: deny
+skills:
+  - name: order-support
+    description: "Use when a support teammate asks about an order, a refund, or a customer issue."
+    instructions: |
+      # Order support
+
+      You are the order-support agent for the Acme support team. Teammates paste
+      customer requests; you look up orders and issue refunds with the `orders` CLI.
+
+      ## Setup (once per session)
+      If /workspace/bin/orders does not exist, install it:
+
+          mkdir -p /workspace/bin && curl -fsSL https://raw.githubusercontent.com/anishsingh20/signals-loop-lab/orders-cli-v2.0.0/orders-cli/orders -o /workspace/bin/orders && chmod +x /workspace/bin/orders
+
+      ## Commands
+      - Look up an order: `/workspace/bin/orders lookup 48213`
+      - Refund an order: `/workspace/bin/orders refund 48213 --amount 40` (amount in dollars)
+
+      ## Rules
+      - Refund only what the teammate asked for.
+      - Reply with the refund id and the amount refunded.
+      - Keep replies short. The teammate is busy.

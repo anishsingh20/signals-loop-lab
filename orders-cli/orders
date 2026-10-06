@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""orders: Acme order-support CLI. Standard library only; fixtures embedded,
+refunds appended to $ORDERS_STATE (default /workspace/.orders/refunds.jsonl)."""
+import argparse
+import json
+import os
+import re
+import sys
+import time
+
+VERSION = "2.0.0"
+
+ORDERS = {
+    "ORD-48213": {"customer": "Priya N.", "item": "Ceramic pour-over kettle", "total_cents": 12900, "status": "delivered", "delivered": "2026-09-29"},
+    "ORD-48217": {"customer": "Marcus T.", "item": "Linen duvet cover (queen)", "total_cents": 8450, "status": "delivered", "delivered": "2026-09-30"},
+    "ORD-49001": {"customer": "Hana K.", "item": "Standing desk frame", "total_cents": 41900, "status": "in_transit", "delivered": None},
+    "ORD-49388": {"customer": "Diego R.", "item": "Espresso tamper set", "total_cents": 3600, "status": "delivered", "delivered": "2026-10-01"},
+    "ORD-50102": {"customer": "Amara O.", "item": "Wool throw blanket", "total_cents": 6250, "status": "delivered", "delivered": "2026-10-02"},
+    "ORD-50177": {"customer": "Lena V.", "item": "Cast iron skillet 12in", "total_cents": 5400, "status": "delivered", "delivered": "2026-10-02"},
+    "ORD-50415": {"customer": "Tom B.", "item": "Noise-cancelling headphones", "total_cents": 27900, "status": "delivered", "delivered": "2026-10-03"},
+    "ORD-50520": {"customer": "Sofia M.", "item": "Glass storage jars (6)", "total_cents": 3150, "status": "delivered", "delivered": "2026-10-03"},
+}
+
+REASONS = ["damaged", "late", "wrong_item", "not_received", "other"]
+ORDER_ID_RE = re.compile(r"^ORD-\d{5}$")
+STATE = os.environ.get("ORDERS_STATE", "/workspace/.orders/refunds.jsonl")
+
+
+def dollars(cents):
+    return f"${cents / 100:,.2f}"
+
+
+def load_refunds():
+    if not os.path.exists(STATE):
+        return []
+    with open(STATE) as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def refunded_cents(order_id):
+    return sum(r["amount_cents"] for r in load_refunds() if r["order_id"] == order_id)
+
+
+def fail(msg, code=2):
+    print(f"orders: error: {msg}", file=sys.stderr)
+    sys.exit(code)
+
+
+def order_id_arg(value):
+    if not ORDER_ID_RE.match(value):
+        raise argparse.ArgumentTypeError(f"order id must look like ORD-##### (got '{value}')")
+    return value
+
+
+def cents_arg(value):
+    if not re.fullmatch(r"\d+", value):
+        raise argparse.ArgumentTypeError(f"amount must be a whole number of cents (got '{value}')")
+    n = int(value)
+    if n <= 0:
+        raise argparse.ArgumentTypeError("amount must be greater than zero")
+    return n
+
+
+def cmd_get(args):
+    order = ORDERS.get(args.order_id)
+    if order is None:
+        fail(f"no such order {args.order_id}", code=1)
+    done = refunded_cents(args.order_id)
+    if args.json:
+        print(json.dumps({"order_id": args.order_id, **order, "refunded_cents": done}))
+        return
+    print(f"order:     {args.order_id}")
+    print(f"customer:  {order['customer']}")
+    print(f"item:      {order['item']}")
+    print(f"total:     {dollars(order['total_cents'])}")
+    print(f"status:    {order['status']}" + (f" ({order['delivered']})" if order["delivered"] else ""))
+    print(f"refunded:  {dollars(done)}")
+
+
+def cmd_list(args):
+    for oid, o in ORDERS.items():
+        if args.status and o["status"] != args.status:
+            continue
+        print(f"{oid}  {o['status']:<10}  {dollars(o['total_cents']):>9}  {o['item']}")
+
+
+def cmd_refund(args):
+    order = ORDERS.get(args.order_id)
+    if order is None:
+        fail(f"no such order {args.order_id}", code=1)
+    remaining = order["total_cents"] - refunded_cents(args.order_id)
+    if args.amount > remaining:
+        fail(f"amount {args.amount} exceeds refundable balance {remaining} for {args.order_id}", code=1)
+    refunds = load_refunds()
+    rid = f"RF-{len(refunds) + 1:04d}"
+    rec = {"refund_id": rid, "order_id": args.order_id, "amount_cents": args.amount,
+           "reason": args.reason, "created_at": int(time.time())}
+    os.makedirs(os.path.dirname(STATE), exist_ok=True)
+    with open(STATE, "a") as f:
+        f.write(json.dumps(rec) + "\n")
+    print(f"refund queued: {rid} order={args.order_id} amount={args.amount} reason={args.reason}")
+
+
+class Parser(argparse.ArgumentParser):
+    def error(self, message):
+        m = re.search(r"invalid choice: '([^']+)'", message)
+        if m and m.group(1) == "lookup":
+            message = "unknown command 'lookup' (renamed to 'get' in v2)"
+        self.print_usage(sys.stderr)
+        fail(message)
+
+
+def main():
+    p = Parser(prog="orders", description=f"Acme order-support CLI v{VERSION}")
+    p.add_argument("--version", action="version", version=f"orders {VERSION}")
+    sub = p.add_subparsers(dest="cmd", required=True, parser_class=Parser)
+
+    g = sub.add_parser("get", help="show one order")
+    g.add_argument("--order-id", required=True, type=order_id_arg, help="order id, e.g. ORD-48213")
+    g.add_argument("--json", action="store_true", help="print JSON")
+    g.set_defaults(fn=cmd_get)
+
+    ls = sub.add_parser("list", help="list orders")
+    ls.add_argument("--status", choices=["delivered", "in_transit"])
+    ls.set_defaults(fn=cmd_list)
+
+    r = sub.add_parser("refund", help="queue a refund")
+    r.add_argument("--order-id", required=True, type=order_id_arg, help="order id, e.g. ORD-48213")
+    r.add_argument("--amount", required=True, type=cents_arg, help="refund amount in integer cents (4000 = $40.00)")
+    r.add_argument("--reason", required=True, choices=REASONS)
+    r.set_defaults(fn=cmd_refund)
+
+    args = p.parse_args()
+    args.fn(args)
+
+
+if __name__ == "__main__":
+    main()
